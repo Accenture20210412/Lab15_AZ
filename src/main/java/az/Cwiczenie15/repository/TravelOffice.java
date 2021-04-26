@@ -21,12 +21,12 @@ public class TravelOffice {
         customers = new ArrayList<>();
         trips = new ArrayList<>();
 
-        AbroadTrip abroadTrip1 = new AbroadTrip(1,"FloridaTrip",LocalDate.of(2020, 11, 12), LocalDate.of(2020, 12, 12), "Florida", 11000, 500 );
-        AbroadTrip abroadTrip2 = new AbroadTrip(2,"Warsaw Dream", LocalDate.of(2020, 3, 10), LocalDate.of(2020, 3, 15), "Warszawa", 1000, 300);
-        DomesticTrip domesticTrip = new DomesticTrip(3,"Way to Katowice", LocalDate.of(2021, 9, 12), LocalDate.of(2021, 9, 20), "Katowice", 500, 100);
-        Customer c1 = new Customer(1,"Anna", "Kowalska","Naleczowska 10", abroadTrip1);
-        Customer c2 = new Customer(2, "Katarzyna", "Walesa", "Piotrkowska 3", abroadTrip2);
-        Customer c3 = new Customer(3, "Jakub", "Groch", "al. Jerozolimskie 110", domesticTrip);
+        AbroadTrip abroadTrip1 = new AbroadTrip(1L,"FloridaTrip",LocalDate.of(2020, 11, 12), LocalDate.of(2020, 12, 12), "Florida", 11000, 500 );
+        AbroadTrip abroadTrip2 = new AbroadTrip(2L,"Warsaw Dream", LocalDate.of(2020, 3, 10), LocalDate.of(2020, 3, 15), "Warszawa", 1000, 300);
+        DomesticTrip domesticTrip = new DomesticTrip(3L,"Way to Katowice", LocalDate.of(2021, 9, 12), LocalDate.of(2021, 9, 20), "Katowice", 500, 100);
+        Customer c1 = new Customer(1L,"Anna", "Kowalska","Naleczowska 10", abroadTrip1);
+        Customer c2 = new Customer(2L, "Katarzyna", "Walesa", "Piotrkowska 3", abroadTrip2);
+        Customer c3 = new Customer(3L, "Jakub", "Groch", "al. Jerozolimskie 110", domesticTrip);
 
         customers.add(c1);
         customers.add(c2);
@@ -44,9 +44,9 @@ public class TravelOffice {
         return trips;
     }
 
-    public Customer getCustomer(int id){
+    public Customer getCustomer(Long id){
         Optional<Customer> customerById = customers.stream()
-                .filter(c -> c.getId() == id)
+                .filter(c -> c.getId().equals(id))
                 .findFirst();
         if(customerById.isEmpty()){
             return null;
@@ -64,9 +64,9 @@ public class TravelOffice {
         return customerById.get();
     }
 
-    public Trip getTrip(int id){
+    public Trip getTrip(Long id){
         Optional<Trip> tripById = trips.stream()
-                .filter(t -> t.getId() == id)
+                .filter(t -> t.getId().equals(id))
                 .findFirst();
         if(tripById.isEmpty()){
             return null;
@@ -88,11 +88,11 @@ public class TravelOffice {
         customers.add(newCustomer);
     }
 
-    public void addCustomer(int id, String name, String surname, String address) {
+    public void addCustomer(Long id, String name, String surname, String address) {
         customers.add(new Customer(id, name, surname, address));
     }
 
-    public void addCustomer(int id, String name, String surname, String address, Trip trip) {
+    public void addCustomer(Long id, String name, String surname, String address, Trip trip) {
         customers.add(new Customer(id, name, surname, address, trip));
     }
 
@@ -116,9 +116,9 @@ public class TravelOffice {
         return customersBeforeDeleting - customers.size();
     }
 
-    public void deleteCustomer(int id){
+    public void deleteCustomer(Long id){
         customers = customers.stream()
-                .filter(c -> c.getId() != id)
+                .filter(c -> !c.getId().equals(id))
                 .collect(Collectors.toList());
     }
 
@@ -134,9 +134,9 @@ public class TravelOffice {
         trips.add(trip);
     }
 
-    public void deleteTrip(int id){
+    public void deleteTrip(Long id){
         trips = trips.stream()
-                .filter(t -> t.getId() != id)
+                .filter(t -> !t.getId().equals(id))
                 .collect(Collectors.toList());
     }
 

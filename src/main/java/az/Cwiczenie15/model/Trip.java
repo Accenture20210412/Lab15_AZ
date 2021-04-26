@@ -13,7 +13,7 @@ public class Trip {
     @Id
     @Column(name = "trip_id")
     @GeneratedValue( strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     @Column(name = "trip_name", length = 30)
     private String name;
     @Column(name = "trip_start")
@@ -25,7 +25,7 @@ public class Trip {
     @Column(name = "trip_price")
     private int price;
 
-    public Trip(int id, String name, LocalDate start, LocalDate finish, String destination, int price) {
+    public Trip(Long id, String name, LocalDate start, LocalDate finish, String destination, int price) {
         this.id = id;
         this.name = name;
         this.start = start;
@@ -43,7 +43,7 @@ public class Trip {
         return info;
     }
 
-    public int getId() {return id;}
+    public Long getId() {return id;}
     public String getName() { return name; }
     public LocalDate getStart() {
         return start;

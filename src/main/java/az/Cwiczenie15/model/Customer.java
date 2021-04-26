@@ -12,7 +12,7 @@ public class Customer {
     @Id
     @Column(name = "customer_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     @Column(name = "customer_name", length = 20)
     private String name;
     @Column(name = "customer_surname", length = 40)
@@ -26,14 +26,14 @@ public class Customer {
 
     }
 
-    public Customer(int id, String name, String surname, String address) {
+    public Customer(Long id, String name, String surname, String address) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.address = address;
     }
 
-    public Customer(int id, String name, String surname, String address, Trip trip) {
+    public Customer(Long id, String name, String surname, String address, Trip trip) {
         this(id, name, surname, address);
         this.trip = trip;
     }
@@ -69,7 +69,7 @@ public class Customer {
         this.trip = trip;
     }
 
-    public int getId() {return id;}
+    public Long getId() {return id;}
 
     public String getName() {
         return name;

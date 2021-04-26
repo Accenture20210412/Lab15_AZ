@@ -824,7 +824,7 @@ false Zulu
 13158||-9223372036854775808|U|G
 13158||10|U|G</Grants>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>718</IntrospectionStateNumber>
+      <IntrospectionStateNumber>729</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <role id="7" parent="1" name="pg_execute_server_program">
@@ -889,7 +889,7 @@ false Zulu
       <Comment>standard public schema</Comment>
       <StateNumber>287</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>719</IntrospectionStateNumber>
+      <IntrospectionStateNumber>730</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="21" parent="6" name="plpgsql">
@@ -989,5 +989,117 @@ false Zulu
       <HandlerId>335</HandlerId>
       <Type>index</Type>
     </access-method>
+    <sequence id="33" parent="20" name="hibernate_sequence">
+      <ObjectId>25112</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>726</StateNumber>
+      <DataType>bigint|0s</DataType>
+    </sequence>
+    <table id="34" parent="20" name="customer">
+      <ObjectId>25114</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>727</StateNumber>
+    </table>
+    <table id="35" parent="20" name="trip">
+      <ObjectId>25119</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>728</StateNumber>
+    </table>
+    <column id="36" parent="34" name="customer_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>727</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="37" parent="34" name="customer_address">
+      <Position>2</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <StateNumber>727</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="38" parent="34" name="customer_name">
+      <Position>3</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <StateNumber>727</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="39" parent="34" name="customer_surname">
+      <Position>4</Position>
+      <DataType>varchar(40)|0s</DataType>
+      <StateNumber>727</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="40" parent="34" name="customer_pkey">
+      <ObjectId>25117</ObjectId>
+      <StateNumber>727</StateNumber>
+      <ColNames>customer_id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>1978</ClassIds>
+    </index>
+    <key id="41" parent="34" name="customer_pkey">
+      <ObjectId>25118</ObjectId>
+      <StateNumber>727</StateNumber>
+      <ColNames>customer_id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>customer_pkey</UnderlyingIndexName>
+    </key>
+    <column id="42" parent="35" name="trip_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>728</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="43" parent="35" name="trip_destination">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <StateNumber>728</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="44" parent="35" name="trip_finish">
+      <Position>3</Position>
+      <DataType>date|0s</DataType>
+      <StateNumber>728</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="45" parent="35" name="trip_name">
+      <Position>4</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <StateNumber>728</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="46" parent="35" name="trip_price">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>728</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="47" parent="35" name="trip_start">
+      <Position>6</Position>
+      <DataType>date|0s</DataType>
+      <StateNumber>728</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <index id="48" parent="35" name="trip_pkey">
+      <ObjectId>25122</ObjectId>
+      <StateNumber>728</StateNumber>
+      <ColNames>trip_id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>1978</ClassIds>
+    </index>
+    <key id="49" parent="35" name="trip_pkey">
+      <ObjectId>25123</ObjectId>
+      <StateNumber>728</StateNumber>
+      <ColNames>trip_id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>trip_pkey</UnderlyingIndexName>
+    </key>
   </database-model>
 </dataSource>

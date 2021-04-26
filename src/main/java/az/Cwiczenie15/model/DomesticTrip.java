@@ -9,7 +9,7 @@ public class DomesticTrip extends Trip{
         return getPrice() - getDiscount();
     }
 
-    public DomesticTrip(int id, String name, LocalDate start, LocalDate finish, String destination, int price, int discount) {
+    public DomesticTrip(Long id, String name, LocalDate start, LocalDate finish, String destination, int price, int discount) {
         super(id, name, start, finish, destination, price);
         this.discount = discount;
     }

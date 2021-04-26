@@ -9,7 +9,7 @@ public class AbroadTrip extends Trip{
         return getInsurance() + getPrice();
     }
 
-    public AbroadTrip(int id, String name, LocalDate start, LocalDate finish, String destination, int price, int insurance) {
+    public AbroadTrip(Long id, String name, LocalDate start, LocalDate finish, String destination, int price, int insurance) {
         super(id, name, start, finish, destination, price);
         this.insurance = insurance;
     }
