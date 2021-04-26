@@ -5,9 +5,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
-@NoArgsConstructor
 @Entity
 public class Trip {
     @Id
@@ -24,6 +25,9 @@ public class Trip {
     private String destination;
     @Column(name = "trip_price")
     private int price;
+
+    public Trip() {
+    }
 
     public Trip(Long id, String name, LocalDate start, LocalDate finish, String destination, int price) {
         this.id = id;

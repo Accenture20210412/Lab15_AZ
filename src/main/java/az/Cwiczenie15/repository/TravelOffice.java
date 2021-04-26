@@ -170,14 +170,7 @@ public class TravelOffice {
         String text="";
         for(Customer customer : customers){
             if(customer!=null) {
-                text += "Customer: "
-                        + customer.getName()
-                        + " " + customer.getSurname()
-                        + " " + customer.getAddress();
-
-                if (customer.getTrip() != null) {
-                    text += " " + customer.getTrip();
-                }
+                text += customer.toString();
             }
         }
         return text;

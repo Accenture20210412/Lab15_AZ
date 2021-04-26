@@ -19,7 +19,8 @@ public class Customer {
     private String surname;
     @Column(name = "customer_address", length = 100)
     private String address;
-    @Transient
+    @ManyToOne
+    @JoinColumn( name = "customer_trip_id")
     private Trip trip;
 
     public Customer(){
