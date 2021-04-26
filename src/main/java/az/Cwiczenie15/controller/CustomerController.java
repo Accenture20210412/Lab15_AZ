@@ -14,48 +14,56 @@ import java.util.List;
 //@RequestMapping("/customers")
 public class CustomerController {
     @Autowired
-    private CustomerRepositoryJpa daoCustomer;
+    private CustomerRepositoryJpa customerDao;
 
     @Autowired
-    private TripRepositoryJpa daoTrip;
+    private TripRepositoryJpa tripDao;
 
     @GetMapping("/customers")
     public List<Customer> findAll(){
-        return daoCustomer.findAll();
+        return customerDao.findAll();
     }
 
     @GetMapping(value = "/customers",params = {"id"})
     public Customer getCustomerById(@RequestParam(name = "id", required = true) Long id){
-        return daoCustomer.getCustomerById(id);
+        return customerDao.getCustomerById(id);
     }
 
     @GetMapping(value = "/customers",params = {"name"})
     public List<Customer> getCustomersByName(@RequestParam(name = "name", required = true) String name){
-        return daoCustomer.getCustomersByName(name);
+        return customerDao.getCustomersByName(name);
     }
 
     @PostMapping("/customers")
     @ResponseStatus(HttpStatus.CREATED)
     public void addCustomer(@RequestBody Customer customer) {
-        daoCustomer.save(customer);
+        customerDao.save(customer);
+    }
+
+    @PostMapping("/customers/{customerId}/trips/{tripId}")
+    public void addTripToCustomerByTripId(@PathVariable(name = "customerId") Long customerId, @PathVariable(name = "tripId") Long tripId){
+        Customer customer = customerDao.getCustomerById(customerId);
+        Trip trip = tripDao.getTripById(tripId);
+        customer.setTrip(trip);
+        customerDao.save(customer);
     }
 
     @PostMapping("/customers/{customerId}/trips")
-    public void addTripToCustomer(@PathVariable(name = "customerId") Long customerId, @RequestParam(name = "tripId") Long tripId){
-        Customer customer = daoCustomer.getCustomerById(customerId);
-        Trip trip = daoTrip.getTripById(tripId);
-        customer.setTrip(trip);
-        daoCustomer.save(customer);
+    public void addTripToCustomer(@PathVariable(name = "customerId") Long customerId, @RequestBody Trip trip){
+        Trip savedTrip = tripDao.save(trip);
+        Customer customer = customerDao.getCustomerById(customerId);
+        customer.setTrip(savedTrip);
+        customerDao.save(customer);
     }
 
     @PutMapping("/customers")
     public void updateCustomer(@RequestBody Customer customer){
-        daoCustomer.save(customer);
+        customerDao.save(customer);
     }
 
     @DeleteMapping("/customers")
     public void deleteCustomer(@RequestParam(name = "id", required = true) Long id){
-        daoCustomer.deleteCustomerById(id);
+        customerDao.deleteCustomerById(id);
     }
 
 //    @Autowired
