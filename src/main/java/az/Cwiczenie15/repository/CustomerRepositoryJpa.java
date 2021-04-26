@@ -9,4 +9,7 @@ public interface CustomerRepositoryJpa extends CrudRepository<Customer, Long> {
 
     List<Customer> findAll();
     Customer save(Customer customer);
+    Customer getCustomerById(Long id);
+    List<Customer> getCustomersByName(String name);
+    void deleteCustomerById(Long id);
 }

@@ -21,10 +21,30 @@ public class CustomerController {
         return customerRepository.findAll();
     }
 
+    @GetMapping(value = "/customers",params = {"id"})
+    public Customer getCustomerById(@RequestParam(name = "id", required = true) Long id){
+        return customerRepository.getCustomerById(id);
+    }
+
+    @GetMapping(value = "/customers",params = {"name"})
+    public List<Customer> getCustomersByName(@RequestParam(name = "name", required = true) String name){
+        return customerRepository.getCustomersByName(name);
+    }
+
     @PostMapping("/customers")
     @ResponseStatus(HttpStatus.CREATED)
     public void addCustomer(@RequestBody Customer customer) {
         customerRepository.save(customer);
+    }
+
+    @PutMapping("/customers")
+    public void updateCustomer(@RequestBody Customer customer){
+        customerRepository.save(customer);
+    }
+
+    @DeleteMapping("/customers")
+    public void deleteCustomer(@RequestParam(name = "id", required = true) Long id){
+        customerRepository.deleteCustomerById(id);
     }
 
 //    @Autowired
